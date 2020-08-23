@@ -1,0 +1,424 @@
+@import "_variables.scss";
+@import "_fonts.scss";
+@import "_nullStyle.scss";
+@import "_textmixin.scss";
+
+.wrapper {
+   height: 100%;
+   overflow: hidden;
+   display: flex;
+   flex-direction: column;
+   background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.5) 100%),
+      url(../img/background.jpg);
+   background-size: auto;
+   box-sizing: border-box;
+}
+.header {
+   position: absolute;
+   width: 100%;
+   z-index: 2;
+
+   &__row {
+      padding: 50px 10px 25px 10px;
+   }
+
+   &__title {
+      color: $FontsColorText2;
+      @include adaptiv-font(36, 22);
+      text-align: center;
+      letter-spacing: 1.4px;
+      font-family: $fontExo;
+   }
+}
+
+.content {
+   flex: 1 1 auto;
+}
+
+.cards {
+   position: relative;
+   z-index: 2;
+   padding: 105px 15px 0px 15px;
+
+   &__row {
+      display: flex;
+   }
+
+   &__column {
+      flex: 0 1 33.333%;
+      display: flex;
+   }
+
+   &__item {
+      display: flex;
+      flex-direction: column;
+      margin: 0px 80px 0px 0px;
+      cursor: pointer;
+      height: 520px;
+   }
+}
+
+.container {
+   max-width: 1120px;
+   margin: 0 auto;
+}
+
+.item {
+   display: flex;
+   justify-content: space-between;
+
+   &__card {
+      position: relative;
+      clip-path: polygon(14% 0, 100% 0, 100% 100%, 0 100%, 0 9.3%);
+      overflow: hidden;
+      width: 320px;
+      height: 480px;
+      background: $FontsColorText2;
+      border: 4px solid $FontsColorLink;
+      border-top-right-radius: 20px;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      &:hover {
+         border: 4px solid $FontsColorLink-hover;
+      }
+
+      &::before {
+         content: "Кот это любит";
+         display: none;
+         position: absolute;
+         left: 50px;
+         top: 25px;
+         z-index: 3;
+         font-size: 16px;
+         color: $BorderCard1-hover;
+         box-sizing: border-box;
+      }
+
+      &.active {
+         &:hover {
+            border: 4px solid $BorderCard1-hover;
+         }
+
+         &:hover {
+            .item__title {
+               display: none;
+            }
+
+            &::before {
+               display: block;
+            }
+         }
+      }
+   }
+
+   &__title {
+      position: absolute;
+      left: 50px;
+      top: 25px;
+      @include adaptiv-font(16, 14);
+      color: $FontsColorText;
+   }
+
+   &__title-name {
+      position: absolute;
+      left: 50px;
+      top: 55px;
+      @include adaptiv-font(48, 40);
+      font-weight: bold;
+   }
+
+   &__title-taste {
+      position: absolute;
+      left: 50px;
+      top: 110px;
+      @include adaptiv-font(24, 20);
+      font-weight: bold;
+   }
+
+   &__description {
+      position: absolute;
+      left: 50px;
+      top: 145px;
+      color: $FontsColorText;
+   }
+
+   &__present {
+      position: absolute;
+      left: 50px;
+      top: 160px;
+      color: $FontsColorText;
+   }
+
+   &__cat-Img {
+      img {
+         object-fit: cover;
+         position: absolute;
+         width: 100%;
+         height: 90%;
+         top: 200px;
+         left: 0px;
+      }
+   }
+
+   &__cat-Ellipse {
+      width: 80px;
+      height: 80px;
+      background: $FontsColorLink;
+      border-radius: 50%;
+      position: absolute;
+      right: 15px;
+      bottom: 15px;
+
+      &.changeColor {
+         background: $FontsColorLink-hover;
+      }
+
+      &.changeHover {
+         background: $BorderCard1;
+      }
+
+      &.changeColor2 {
+         background: $FontsColorLink-hover;
+      }
+
+      &.changeHover2 {
+         background: $BorderCard1;
+      }
+   }
+
+   &__weight {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: absolute;
+      top: -20px;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: 0 auto;
+      @include adaptiv-font(42, 30);
+      color: $FontsColorText2;
+      word-wrap: break-word;
+   }
+
+   &__weight2 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: absolute;
+      top: 45px;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: 0 auto;
+      @include adaptiv-font(21, 20);
+      color: $FontsColorText2;
+   }
+}
+
+.active {
+   border: 4px solid $BorderCard1;
+}
+
+._active {
+   background: $BorderCard1-hover;
+}
+
+.gray {
+   background: $BorderCard2;
+}
+
+.card__background1 {
+   position: absolute;
+   top: -4px;
+   left: -4px;
+   bottom: 0;
+   right: 0;
+   z-index: 0;
+   width: 330px;
+   height: 490px;
+   fill: $FontsColorText2;
+   stroke: $FontsColorLink;
+
+   &.addBg {
+      stroke: $BorderCard1-hover;
+   }
+}
+
+.card__background2 {
+   position: absolute;
+   top: -4px;
+   left: -4px;
+   bottom: 0;
+   right: 0;
+   z-index: 0;
+   width: 330px;
+   height: 490px;
+   fill: $FontsColorText2;
+   stroke: $FontsColorLink;
+
+   &.addBg {
+      stroke: $BorderCard1-hover;
+   }
+}
+
+.card__background3 {
+   position: absolute;
+   top: -4px;
+   left: -4px;
+   bottom: 0;
+   right: 0;
+   z-index: 0;
+   width: 330px;
+   height: 490px;
+   fill: $FontsColorText2;
+   stroke: $BorderCard2;
+}
+
+.disabled {
+   position: relative;
+   cursor: default;
+
+   &::before {
+      content: "";
+      position: absolute;
+      width: 320px;
+      height: 480px;
+      z-index: 3;
+      background-color: $BorderCard2Color;
+      clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%, 0 10%);
+      border-radius: 20px;
+      border-top-left-radius: 72px;
+      opacity: 0.6;
+   }
+}
+
+.card {
+   &__link {
+      margin: 15px 0px 0px 0px;
+   }
+}
+
+.link {
+   &__text {
+      color: $FontsColorText2;
+      text-align: center;
+      @include adaptiv-font(13, 15);
+      letter-spacing: 0.8px;
+      max-width: 320px;
+      cursor: pointer;
+
+      span {
+         color: $BorderCard1;
+      }
+   }
+
+   &__linked {
+      color: $FontsColorLink;
+      border-bottom: 1px dashed $FontsColorLink;
+   }
+}
+.yellow {
+   color: $FontsColorText3;
+}
+
+@media (max-width: 1150px) {
+   .wrapper {
+      height: 330vh;
+   }
+
+   .cards {
+      position: relative;
+      z-index: 2;
+      padding: 105px 0px 0px 0px;
+
+      &__row {
+         display: grid;
+         grid-template-columns: repeat(2, 1fr);
+         grid-template-rows: repeat(2, 1fr);
+         grid-column-gap: 0px;
+         grid-row-gap: 50px;
+         margin: 0px 0px 0px 0px;
+      }
+
+      &__column {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         text-align: center;
+      }
+
+      &__item {
+         display: flex;
+         margin: 0px 0px 0px -200px;
+      }
+   }
+
+   .disabled {
+      margin: 0px 0px 0px 300px;
+   }
+
+   .item__card {
+      clip-path: polygon(14.4% 0, 100% 0, 100% 100%, 0 100%, 0 9.5%);
+   }
+}
+
+.thirds {
+   border: 4px solid $BorderCard2;
+}
+
+@media (max-width: 790px) {
+   .wrapper {
+      height: 610vh;
+   }
+
+   .cards {
+      position: relative;
+      z-index: 2;
+      padding: 115px 0px 0px 0px;
+
+      &__row {
+         display: grid;
+         grid-template-columns: 1fr;
+         grid-template-rows: repeat(2, 1fr);
+         grid-column-gap: 0px;
+         grid-row-gap: 30px;
+         margin: 0px 0px 0px 0px;
+      }
+
+      &__column {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         text-align: center;
+      }
+
+      &__item {
+         display: flex;
+         margin: 0px 0px 0px 0px;
+      }
+
+      .item__card {
+         clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%, 0 9.5%);
+      }
+   }
+
+   .disabled {
+      margin: 0px 0px 0px 0px;
+
+      &::before {
+         content: "";
+         width: 300px;
+      }
+   }
+
+   .item__card {
+      max-width: 300px;
+   }
+
+   .link__text {
+      max-width: 300px;
+   }
+}
